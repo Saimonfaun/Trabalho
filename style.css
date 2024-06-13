@@ -28,18 +28,16 @@ h1{
     color: var(--cor-destaque);
 }
 p{color:white;
+    font-size: 25%;
 }
 
 button {
-    background-image: linear-gradient(#062af7,#374af8);
+    background-color: transparent;
     height: 20%;
     border: red;
+    color:#430081;
     border-radius: 100px;
-    padding: 100px;
-    transition: background-color 0.3s;
-
-   
-
+    padding: 80px;
 }
 
 button:hover{

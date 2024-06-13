@@ -5,35 +5,57 @@ const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
 
 const perguntas = [
-    { enunciado: "Você conhece todas as lendas do folclore brasileiro?", alternativas: ["Sim", "Não sei"] },
-    { enunciado: "Deseja conhecer", alternativas: ["Sim", "Não"] },
-    { enunciado: "Aqui estão algumas referências. Agora que você sabe, deseja continuar?", alternativas: ["Sim", "Não"] },
-    { enunciado: "A cuca vai te pegar!!", alternativas: ["0","0"] },
-    { enunciado: "É uma pena ", alternativas: ["0","0"] },
-    { enunciado: "Tem certeza?", alternativas: ["Não", "Sim"] },
-    { enunciado: "Dentre essas lendas, quais você prefere?", alternativas: ["CUCA", "SACI", "BOI TATÁ"] },
-    { enunciado: "Aponte a principal característica do Saci", alternativas: ["Tem uma só perna", "Sequestra crianças, cobra de fogo com inúmeros olhos"] },
-    { enunciado: "Aponte a principal característica do Boi Tatá", alternativas: ["Tem uma só perna", "Sequestra crianças, cobra de fogo com inúmeros olhos"] },
-    { enunciado: "Aponte a principal característica da cuca", alternativas: ["Tem uma só perna", "Sequestra crianças, cobra de fogo com inúmeros olhos"] },
-    { enunciado: "Parabéns, você acertou! Deseja continuar?", alternativas: ["Sim", "Não"] },
-    { enunciado: "Uma pena, você errou. Deseja continuar?", alternativas: ["Sim", "Não"] },
+    { enunciado: "Você conhece todas as lendas do folclore brasileiro?", alternativas:[ {texto:"sim",afirmacao:1},{texto:"não",afirmacao:2} ]},
+    { enunciado: "Deseja conhecer",  alternativas:[ {texto:"sim",afirmacao:1},{texto:"não",afirmacao:2} ] },
+    { enunciado: "Aqui estão algumas referências. Agora que você sabe, deseja continuar?",  alternativas:[ {texto:"sim",afirmacao:1},{texto:"não",afirmacao:2} ] },
+    { enunciado: "É uma pena ",alternativas:[ {texto:"voltar",afirmacao:1}]},
+    { enunciado: "Tem certeza?",  alternativas:[ {texto:"sim",afirmacao:1},{texto:"não",afirmacao:2} ] }, 
+    { enunciado: "Dentre essas lendas, quais você prefere?",alternativas:[ {texto:"CUCA",afirmacao:1},{texto:"SACI",afirmacao:2},{texto:"BOI TATÁ",afirmacao:3} ] },
+    { enunciado: "Aponte a principal característica do Saci",alternativas:[ {texto:"Tem uma só perna",afirmacao:1},{texto:"Sequestra crianças",afirmacao:2},{texto:"cobra de fogo com inúmeros olhos",afirmacao:3}]},
+    { enunciado: "Aponte a principal característica do Boi Tatá",alternativas:[ {texto:"Tem uma só perna",afirmacao:1},{texto:"Sequestra crianças",afirmacao:2},{texto:"cobra de fogo com inúmeros olhos,",afirmacao:3} ] },
+    { enunciado: "Aponte a principal característica da cuca",alternativas:[ {texto:"Tem uma só perna",afirmacao:1},{texto:"Sequestra crianças",afirmacao:2},{texto:"cobra de fogo com inúmeros olhos,",afirmacao:3} ] },
+    { enunciado: "Parabéns, você acertou! Deseja continuar?", alternativas:[ {texto:"sim",afirmacao:1},{texto:"não",afirmacao:2} ] },
+    { enunciado: "Uma pena, você errou. Deseja continuar?",alternativas:[ {texto:"sim",afirmacao:1},{texto:"não",afirmacao:2} ] },
 ];
 
 let atual = 0;
 let perguntaAtual;
 
+
 function mostraPergunta() {
+    if (atual >= perguntas.length) {
+        mostraResultado();
+        return;
+    }
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
+    caixaAlternativas.textContent = "";
     mostraAlternativas();
 }
 
-function mostraAlternativas(){
-    for(const alternativa of perguntaAtual.alternativas){
+function mostraAlternativas() {
+    for (const alternativa of perguntaAtual.alternativas) {
         const botaoAlternativas = document.createElement("button");
-        botaoAlternativas.textContent = alternativa;
+        botaoAlternativas.textContent = alternativa.texto;
+        botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
         caixaAlternativas.appendChild(botaoAlternativas);
-
     }
 }
+
+function respostaSelecionada(opcaoSelecionada) {
+    let afirmacoes = opcaoSelecionada.afirmacao;
+    atual++;
+
+    if (atual === 1 && afirmacoes === 1) {
+        atual = 5;
+    } 
+    if (atual === 2 && afirmacoes === 2) {
+        atual = 3;
+    } 
+    
+    mostraPergunta();
+}
+
+
+
 mostraPergunta();
