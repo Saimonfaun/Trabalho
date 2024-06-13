@@ -17,7 +17,7 @@ body {
 }
 
 .caixa-principal{
-    background-color: var(--cor-principal);
+    
     width: 90%;
     max-width: 600px;
     text-align: center;
@@ -27,17 +27,23 @@ body {
 h1{
     color: var(--cor-destaque);
 }
+p{color:white;
+}
 
 button {
-    background-color: var(--cor-secundaria);
-    color: var(--cor-textinho);
-    border: none;
+    background-image: linear-gradient(#062af7,#374af8);
+    height: 20%;
+    border: red;
     border-radius: 100px;
-    padding: 75px;
+    padding: 100px;
     transition: background-color 0.3s;
+
+   
+
 }
 
 button:hover{
+    height: 100%;
     background-color: var(--cor-destaque);
     color: var(--cor-principal);
 }
