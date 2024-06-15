@@ -8,7 +8,8 @@
 }
 
 body {
-    background-image: linear-gradient(#04d8fd,#000d81);
+    background: rgb(4,216,253);
+    background: linear-gradient(143deg, rgba(4,216,253,1) 0%, rgba(9,9,121,1) 94%, rgba(0,13,129,1) 100%);
     color: var(--cor-textinho);
     display: flex;
     justify-content: center;
@@ -34,10 +35,9 @@ p{color:white;
 button {
     background-color: transparent;
     height: 20%;
-    border: red;
-    color:#430081;
     border-radius: 100px;
     padding: 80px;
+    color:white;
 }
 
 button:hover{

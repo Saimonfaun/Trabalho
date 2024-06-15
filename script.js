@@ -6,7 +6,7 @@ const textoResultado = document.querySelector(".texto-resultado");
 
 const perguntas = [
     { enunciado: "Você conhece todas as lendas do folclore brasileiro?", alternativas:[ {texto:"sim",afirmacao:"s"},{texto:"não",afirmacao:"n"} ]},
-    { enunciado: "Deseja conhecer",  alternativas:[ {texto:"sim",afirmacao:"s"},{texto:"não",afirmacao:"n"} ] },
+    { enunciado: "Deseja conhecer?",  alternativas:[ {texto:"sim",afirmacao:"s"},{texto:"não",afirmacao:"n"} ] },
     { enunciado: "Aqui estão algumas referências.https://www.todamateria.com.br/folclore-brasileiro/ (copie o link e coloque na url) Agora que você sabe, deseja continuar?",  alternativas:[ {texto:"sim",afirmacao:"s"},{texto:"não",afirmacao:"n"} ] },
     { enunciado: "É uma pena ",alternativas:[ {texto:"voltar",afirmacao:"v"}]},
     { enunciado: "Tem certeza?",  alternativas:[ {texto:"sim",afirmacao:1},{texto:"não",afirmacao:2} ] }, 
@@ -24,7 +24,6 @@ let perguntaAtual;
 
 function mostraPergunta() {
     if (atual >= perguntas.length) {
-        mostraResultado();
         return;
     }
     perguntaAtual = perguntas[atual];
@@ -44,13 +43,11 @@ function mostraAlternativas() {
 function respostaSelecionada(opcaoSelecionada) {
     let afirmacoes = opcaoSelecionada.afirmacao;
 
-    if (atual === 0 && afirmacoes === "s") {
+    if (atual === 0 && afirmacoes === "s"||atual===2 && afirmacoes==="s") {
         atual = 5;
     } else if (atual === 1 && afirmacoes === "n") {
         atual = 3;
     } else if (atual === 3 && afirmacoes === "v"){
-        atual = 0;
-    } else if(atual===2 && afirmacoes==="s"){
         atual = 0;
     }else {
         atual++;
