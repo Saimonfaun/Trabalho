@@ -5,10 +5,10 @@ const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
 
 const perguntas = [
-    { enunciado: "Você conhece todas as lendas do folclore brasileiro?", alternativas:[ {texto:"sim",afirmacao:1},{texto:"não",afirmacao:2} ]},
-    { enunciado: "Deseja conhecer",  alternativas:[ {texto:"sim",afirmacao:1},{texto:"não",afirmacao:2} ] },
-    { enunciado: "Aqui estão algumas referências. Agora que você sabe, deseja continuar?",  alternativas:[ {texto:"sim",afirmacao:1},{texto:"não",afirmacao:2} ] },
-    { enunciado: "É uma pena ",alternativas:[ {texto:"voltar",afirmacao:1}]},
+    { enunciado: "Você conhece todas as lendas do folclore brasileiro?", alternativas:[ {texto:"sim",afirmacao:"s"},{texto:"não",afirmacao:"n"} ]},
+    { enunciado: "Deseja conhecer",  alternativas:[ {texto:"sim",afirmacao:"s"},{texto:"não",afirmacao:"n"} ] },
+    { enunciado: "Aqui estão algumas referências.https://www.todamateria.com.br/folclore-brasileiro/ (copie o link e coloque na url) Agora que você sabe, deseja continuar?",  alternativas:[ {texto:"sim",afirmacao:"s"},{texto:"não",afirmacao:"n"} ] },
+    { enunciado: "É uma pena ",alternativas:[ {texto:"voltar",afirmacao:"v"}]},
     { enunciado: "Tem certeza?",  alternativas:[ {texto:"sim",afirmacao:1},{texto:"não",afirmacao:2} ] }, 
     { enunciado: "Dentre essas lendas, quais você prefere?",alternativas:[ {texto:"CUCA",afirmacao:1},{texto:"SACI",afirmacao:2},{texto:"BOI TATÁ",afirmacao:3} ] },
     { enunciado: "Aponte a principal característica do Saci",alternativas:[ {texto:"Tem uma só perna",afirmacao:1},{texto:"Sequestra crianças",afirmacao:2},{texto:"cobra de fogo com inúmeros olhos",afirmacao:3}]},
@@ -41,20 +41,25 @@ function mostraAlternativas() {
         caixaAlternativas.appendChild(botaoAlternativas);
     }
 }
-
 function respostaSelecionada(opcaoSelecionada) {
     let afirmacoes = opcaoSelecionada.afirmacao;
-    atual++;
 
-    if (atual === 1 && afirmacoes === 1) {
+    if (atual === 0 && afirmacoes === "s") {
         atual = 5;
-    } 
-    if (atual === 2 && afirmacoes === 2) {
+    } else if (atual === 1 && afirmacoes === "n") {
         atual = 3;
-    } 
+    } else if (atual === 3 && afirmacoes === "v"){
+        atual = 0;
+    } else if(atual===2 && afirmacoes==="s"){
+        atual = 0;
+    }else {
+        atual++;
+    }
     
     mostraPergunta();
 }
+
+
 
 
 
