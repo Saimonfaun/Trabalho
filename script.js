@@ -10,7 +10,7 @@ const perguntas = [
     { enunciado: "Aqui estão algumas referências.https://www.todamateria.com.br/folclore-brasileiro/ (copie o link e coloque na url) Agora que você sabe, deseja continuar?",  alternativas:[ {texto:"sim",afirmacao:"s"},{texto:"não",afirmacao:"n"} ] },
     { enunciado: "É uma pena ",alternativas:[ {texto:"voltar",afirmacao:"v"}]},
     { enunciado: "Tem certeza?",  alternativas:[ {texto:"sim",afirmacao:1},{texto:"não",afirmacao:2} ] }, 
-    { enunciado: "Dentre essas lendas, quais você prefere?",alternativas:[ {texto:"CUCA",afirmacao:1},{texto:"SACI",afirmacao:2},{texto:"BOI TATÁ",afirmacao:3} ] },
+    { enunciado: "Dentre essas lendas, quais você prefere?",alternativas:[ {texto:"CUCA",afirmacao:"c"},{texto:"SACI",afirmacao:2},{texto:"BOI TATÁ",afirmacao:3} ] },
     { enunciado: "Aponte a principal característica do Saci",alternativas:[ {texto:"Tem uma só perna",afirmacao:1},{texto:"Sequestra crianças",afirmacao:2},{texto:"cobra de fogo com inúmeros olhos",afirmacao:3}]},
     { enunciado: "Aponte a principal característica do Boi Tatá",alternativas:[ {texto:"Tem uma só perna",afirmacao:1},{texto:"Sequestra crianças",afirmacao:2},{texto:"cobra de fogo com inúmeros olhos,",afirmacao:3} ] },
     { enunciado: "Aponte a principal característica da cuca",alternativas:[ {texto:"Tem uma só perna",afirmacao:1},{texto:"Sequestra crianças",afirmacao:2},{texto:"cobra de fogo com inúmeros olhos,",afirmacao:3} ] },
@@ -49,7 +49,11 @@ function respostaSelecionada(opcaoSelecionada) {
         atual = 3;
     } else if (atual === 3 && afirmacoes === "v"){
         atual = 0;
-    }else {
+    }else if(atual ===5 && afirmacoes === "c"){
+        atual = 8;
+    }else if(atual ===5 && afimações === 2 ){
+        atual = 6;
+    } else {
         atual++;
     }
     
